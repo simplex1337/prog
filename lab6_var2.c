@@ -4,7 +4,7 @@
 #define MAXPATH 261
 #define MAXCNT 10
 #define MAXSIZE (MAXPATH*MAXCNT)
-/*объявляю переменные и прототипы*/
+
 char delim;						//разделитель
 char paths[MAXSIZE];			//непосредственно пути
 char newpaths[MAXSIZE];
