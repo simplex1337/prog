@@ -1,0 +1,106 @@
+#include <stdio.h>
+
+void scanStroki(char mass[MAXSIZE],char delim)
+{
+	char delim;
+	char mass[MAXSIZE];
+	
+	printf("input delim: ");
+	scanf("%c%*c",&delim);
+	printf("input paths: ");
+	fgets(paths,MAXSIZE,stdin);
+
+	if( delim == ' '){
+		printf("delim is <space>\n");
+	}else
+		printf("delim is %c\n",delim);		
+	printf("path string is: %s\n",mass);
+}
+int proverka(char mass[])
+{
+	scanf(mass[]);
+	for (i = 0; mass[i] != '\0'; i++){
+		if (mass[i] == "*" || mass[i] == "?" || mass[i] == ":" || mass[i] == "<" || mass[i] == ">" || mass[i] == "\\" || mass[i] == "“"){
+			return -1;
+		}
+		else{
+			return 0;
+		}
+}
+
+int stok(char str[], char delim, char *ptr[])
+{
+	int s;
+	scanf(str[]);
+	scanf(delim);
+	scanf(*ptr[]);
+	*suf = str;
+	ptr[0] = str;
+	j = 1;
+	for (i = 0; suf[i] != '\0'; i++){
+		if (suf[i] == delim){
+			suf[i] = '\0';
+			s = suf + i + 1;
+			ptr[j] = s;
+			j++;
+		}
+	}
+	return j;
+	scanf(str[]);
+	scanf(delim);
+	scanf(*ptr[]);
+	scanf(j);
+}
+
+int main()
+{
+	*f = fopen("input", "r");
+	if (f == '\0'){
+		fgets(paths, MAX_PATH, f);
+		printf("input paths: %s\n", paths);
+		delim = '+';
+		printf("delim: %c\n", delim);
+		printf("input dir:");
+		bool = proverka (dir)
+		if (bool == 0){
+			lenghtPtr = stok (paths, delim, ptr);
+			for (i = 0; i < lenghtPtr; i++){
+				p[i] = 0;
+			}
+			for (i = 0; i < lenghtPtr; i++){
+				for (j = 0; *(ptr[i] + j) != '\0'; j++){
+					if (.................?????.....................){
+						p[i] = 1; 
+						break;
+					}
+				}
+			}
+		printf("output paths:");
+		for (i = 0; i < lenghtPtr; i++){
+			if (i != 0){
+				printf("%c", delim);
+			}
+			else{
+				if (p[i] != 1 && ptr[i] == '~' && ptr + 1 == "/"){
+					if (dir[id] != 0x2F){
+						printf("%s/", dir);
+					}
+					else{
+						printf("%s", dir);
+					}
+					if (name[in] != 0x2F){
+						prinf("%s/", name);
+					}
+					else{
+						printf("%s" name);
+					}
+					printf("%s", ptr[i] + 2);
+				else{
+					printf("%s",ptr[i]);
+				}
+		else{
+			printf("Bad dir");
+		}
+	}
+	return 0;
+}	
