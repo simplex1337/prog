@@ -1,10 +1,9 @@
-all: lul
-
-lul: main.o strings.o
-	gcc -o lul obj/main.o obj/strings.o
+lul.a: main.o strings.o
+	gcc -o lul.a main.o strings.o
 
 obj/main.o: main.c
-	gcc -c main.c -o obj/main.o
-    
+	gcc -c main.c -o main.o
+	cp main.o obj
+	
 obj/strings.o: strings.c
-	gcc -c strings.c -o obj/strings.o
+	gcc -c strings.c -o strings.o
