@@ -7,7 +7,7 @@ int process(char *str, int size)
 {
     char *ptr[30];
     int j = stok(str, '/', ptr, size);
-    int i; 
+    int i, ptr_rm = 1; 
     for (i = 0; i < size; i++)
         printf("%c", str[i]);
     i = 1;
@@ -20,13 +20,21 @@ int process(char *str, int size)
         if (sequal(s2, "cygdrive") == 1) {
             printf("cyg founded\n");
             k =- 9;
-            for (k; k < i; k++)
+            for (k; k < i; k++){
+                if (str[k] == *ptr[ptr_rm]) {
+                    ptr[ptr_rm] = '\0';
+                    ptr_rm++;
+                }
                 str[k] = '\0';
+            }
             str[i] = str[i+1];
             str[i + 1] = ':'; 
         }
         i++;
     }
+    for (i = 0; i < size; i++)
+        printf("%c", str[i]);
+    suntok(str, '/', ptr, j - ptr_rm);
     for (i = 0; i < size; i++)
         printf("%c", str[i]);
 }
