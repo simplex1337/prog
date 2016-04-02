@@ -30,7 +30,7 @@ void suntok(char *str, char delim, char *ptr[], int cnt)
 		*(ptr[i] - 1) = delim;
 	}
 }
-int slen(char *str[])                
+int slen(char *str)                
 {
 	int i;
 	for(i = 0; str[i] != '\0'; i++);
@@ -44,3 +44,12 @@ int sequal(char s1[], char s2[])
         if( s1[i]!=s2[i] ) flg = 0;
     return flg;
 }
+
+/*int isLowCase(char *str, char size)
+{
+	for(int i=0; i < size; i++); 
+		if( str >= '0' && A=atoi(str) <= '255')
+			return 1;
+	return 0;
+}
+*/
