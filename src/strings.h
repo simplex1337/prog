@@ -1,12 +1,8 @@
-#ifndef string_h
-#define string_h
-
-int stok(char *str, char delim, char *ptr[]);
-int schr(char *str, char delim);
+int stok(char *str, char delim, char *ptr[], int size);
+int schr(char *str, char delim, int size);
 void suntok(char *str, char delim, char *ptr[], int cnt);
 int slen(char *str);
 int sequal(char s1[], char s2[]);
-//int isLowCase(char *str, char size);
-
-#endif 
- 
+int isDigit(char *str, int size);
+char toLowCase(char *str, int size);
+int sspn(char str[], int size2);

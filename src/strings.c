@@ -1,11 +1,13 @@
 #include "strings.h"
+#include <stdlib.h>
+#include <stdio.h>
 
-int stok(char str[], char delim, char *ptr[])
+int stok(char *str, char delim, char *ptr[], int size)
 {
 	char *suf = str;
 	ptr[0] = str;
-	int i,j = 1;
-	while( ( i = schr(suf, delim) ) >= 0 ) {
+	int i, j = 1;
+	while( ( i = schr(suf, delim, size) ) >= 0 ) {
 		suf[i] = '\0';
 		suf = suf + i + 1;
 		ptr[j] = suf;
@@ -14,10 +16,10 @@ int stok(char str[], char delim, char *ptr[])
 	return j;
 }
 
-int schr(char *str, char delim)
+int schr(char *str, char delim, int size)
 {
 	int i, idx = -1;
-	for(i = 0; (str[i] != '\0') && (str[i] != delim); i++);
+	for(i = 0; (i < size) && (str[i] != delim); i++);
 		if(str[i] == delim)
 			idx = i;
 	return idx;
@@ -45,11 +47,30 @@ int sequal(char s1[], char s2[])
     return flg;
 }
 
-/*int isLowCase(char *str, char size)
+int isDigit(char *str, int size)
 {
-	for(int i=0; i < size; i++); 
-		if( str >= '0' && A=atoi(str) <= '255')
-			return 1;
-	return 0;
+	for(int i = 0; i < size; i++) 
+		if( atoi(str) < 0 || atoi(str) > 255)
+			printf("powel nah\n");
 }
-*/
+
+char toLowCase(char *str, int size) 
+{ 
+	for (int i = 0; i < size; i++) {
+		if( str[i] >= 'A' && str[i] <= 'Z') 
+			return str[i] + ('a' - 'A'); 
+		return str[i];
+	}
+}
+
+int sspn(char str[], int size2)
+{
+	int i;
+	for(i = 0; str[i] != ':' ; i++) {
+		if(atoi(str) < 0 || atoi(str) > 255) {
+			//break;
+			printf("powel nah\n");
+		}
+	}
+	return i;
+}

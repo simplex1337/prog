@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "strings.h"
 
 #define MAXPATH 261
@@ -10,17 +11,19 @@ int main()
 	char delim;
 	char str[MAXSIZE];
 	char *ptr[10];
-	printf("input delim: ");
-	scanf("%c%*c",&delim);
 	printf("input paths: ");
 	fgets(str, MAXSIZE, stdin);
 	int size = slen(str);
-	stok(str, delim, ptr);
+	char c = toLowCase(str, size);
+	int  j = stok(str, ':', ptr, size);
+	int cnt = j;
 	int size2 = slen(str);
-	int j = stok(str, delim, ptr);
-	suntok(str, delim, ptr, j);	
+	int  k = stok(str, '.', ptr, size);
+	sspn(str, size2);
+	
+	suntok(str, '.', ptr, cnt);
 	printf("path string is: %s\n",str);
-	//printf("size = %d",size2);
+	//printf("size = %d\n",size);
 	return 0;
 	
 }
