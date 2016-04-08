@@ -15,13 +15,11 @@ int main()
 	fgets(str, MAXSIZE, stdin);
 	int size = slen(str);
 	char c = toLowCase(str, size);
-	int  j = stok(str, ':', ptr, size);
-	int cnt = j;
 	int size2 = slen(str);
 	int  k = stok(str, '.', ptr, size);
 	sspn(str, size2);
 	
-	suntok(str, '.', ptr, cnt);
+	suntok(str, '.', ptr, k);
 	printf("path string is: %s\n",str);
 	//printf("size = %d\n",size);
 	return 0;

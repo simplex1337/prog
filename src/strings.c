@@ -1,6 +1,7 @@
 #include "strings.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 
 int stok(char *str, char delim, char *ptr[], int size)
 {
@@ -63,14 +64,19 @@ char toLowCase(char *str, int size)
 	}
 }
 
-int sspn(char str[], int size2)
+int sspn(char str[], int size)
 {
-	int i;
-	for(i = 0; str[i] != ':' ; i++) {
-		if(atoi(str) < 0 || atoi(str) > 255) {
-			//break;
-			printf("powel nah\n");
-		}
+	int i, l, flg = 1;
+        for(l = 0; l < 4; i =+ 2, l++) {
+            int x;
+            printf("sosi\n");
+            for(i = 0; i != schr(str, ':', size) && str[i] != '\0'; i++) {
+                char *t = &str[i];
+                x = x + atoi(t) * pow(10, i);
+            }
+            if( x < 0 || x > 255) {
+                printf("powel nah\n");
+                return 0;
+            }
 	}
-	return i;
 }
