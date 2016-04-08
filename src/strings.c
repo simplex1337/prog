@@ -1,56 +1,89 @@
 #include "strings.h"
- 
-int stok(char *str, char delim, char *ptr[], int size) 
+
+int slen (char s[])
 {
-    
-    char *suf = str;
-    ptr[0] = str;
-    int i, j = 1;
-    while((i = schr(suf, delim, size)) >= 0) {
-        suf[i] = '\0';
-        suf = suf + i + 1;
-        ptr[j] = suf;
-        j++;
-    }
-    return j;
+	int i;
+	for (i = 0; s[i]!='\0'; i++);
+	return i;
 }
 
-int suntok(char str[], char delim, char *ptr[], int cnt) 
+int sequal (char s1[], char s2[])
 {
-    int i;
-    for(i = 1; i < cnt; i++)
-        *(ptr[i] - 1) = delim;
+	int i;
+	for (i = 0; ((s1[i] != '\0') || (s2[i] != '\0')); i++)
+		if (s1[i] != s2[i])
+			return -1;
+	return 0;
 }
 
-int schr(char *suf, char delim, int size)      
+void scpy (char *of, char *to)
 {
-    int i, idx = -1;
-    for (i = 0; (i < size) && (suf[i] != delim); i++);
-    if(suf[i] == delim)
-        idx = i;
-    return idx;
+	int i;
+	for (i = 0; *(of + i) != '\0'; i++)
+		*(to + i) = *(of + i);
 }
 
-int slen(char str[])                
+void scat (char *s1, char *s2)
 {
-    int i;
-    for(i = 0; str[i] != '\0'; i++);
-    return i;
+	int len = slen(s1);
+	char *suf = s1 + len;
+	scpy (s2,suf);
 }
 
-char scopy(char s1[], int i, int size)               
-{                                                      
-    char s2[size];
-    for(i; i <= size; i++)
-        s2[i] = s1[i];
-    s2[i] = '\0';
-    return *s2;
+int schr (char *str,char ch)
+{
+	int i, idx = -1;
+	for(i = 0;(str[i] != '\0') && (str[i] != ch); i++);
+	if(str[i] == ch)
+		idx = i;
+	return idx;
 }
 
-int sequal(char s1[], char s2[])
+int scmp (char s1[], char s2[])
 {
-    int i, flg = 1;
-    for(i=0; flg && (s1[i]!='\0' || s2[i]!='\0') ;i++)
-        if( s1[i]!=s2[i] ) flg = 0;
-    return flg;
+	int i;
+	for (i = 0; ((s1[i] == s2[i]) && (s1[i] != '\0') && (s2[i] != '\0')); i++);
+	if (s1[i] < s2[i])
+		return -1;
+    if (s1[i] > s2[i])
+        return 1;
+}
+
+int sspn (char str[], char sym[])
+{
+	int i;
+	for (i = 0; str[i] != '\0'; i++)
+		if (schr(sym, str[i]) < 0)
+			break;
+	return i;
+}
+
+int stok(char str[], char delim, char *ptr[])
+{
+	char *suf = str;
+	ptr[0] = str;
+	int i, j = 1;
+	while((i = schr(suf, delim)) >= 0 ){
+		suf[i] = '\0';
+		suf = suf + i + 1;
+		ptr[j] = suf;
+		j++;
+	}
+	return j;
+}
+
+void suntok (char str[], char delim, char *ptr[], int cnt)
+{
+	int i;
+	for (i = 1; i < cnt; i++)
+		*(ptr[i] - 1) = delim;
+}
+
+int scspn (char ban[], char paths[])
+{
+	int i;
+	for (i = 0; i != 8; i++)
+		if (schr(paths , ban[i]) >= 0)
+			return 1;
+	return 0;
 }
