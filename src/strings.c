@@ -62,14 +62,17 @@ char toLowCase(char *str, int size)
 	}
 }
 
-int isIp(char *ptr[], int size)
+int isIp(char *ptr[], int size, int t)
 {
 	int l;
-	for(l = 0; l <= 3; l++) {
-		int x;
-		x = atoi(ptr[l]);
-        if(x < 0 || x > 255)
-			return printf("IP is correct: no\n");	
-	}
+	if (t == 3) {
+		for(l = 0; l <= 3; l++) {
+			int x;
+			x = atoi(ptr[l]);
+			if(x < 0 || x > 255)
+				return printf("IP is correct: no\n");	
+		}
 	return printf("IP is correct: yes\n");
+	}
+	else printf("IP is correct: no\n");	
 }
