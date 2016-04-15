@@ -1,8 +1,11 @@
-lul.a: main.o strings.o
-	gcc -o lul.a ./obj/main.o ./obj/strings.o
+lul.a: ./obj/main.o ./obj/strings.o ./obj/add.o
+	gcc -o lul.a ./obj/main.o ./obj/strings.o ./obj/add.o -O0
 
-main.o: ./src/main.c
+./obj/main.o: ./src/main.c
 	gcc -c ./src/main.c -o ./obj/main.o
 
-strings.o: ./src/strings.c
+./obj/strings.o: ./src/strings.c
 	gcc -c ./src/strings.c -o ./obj/strings.o
+	
+./obj/add.o: ./src/add.c
+	gcc -c ./src/add.c -o ./obj/add.o
