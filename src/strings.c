@@ -76,3 +76,27 @@ int isIp(char *ptr[], int size, int t)
 	}
 	else printf("IP is correct: no\n");	
 }
+
+void check(char *str, char *ptr[], int size, int t)
+{
+	int j = stok(str, ':', ptr, size);
+	for(int i = 0; (i < size); i++)
+		if(str[i] == '.')
+			t++;
+	if (t == 3) {
+		for(int i = 0; i < slen(str); i++) 
+			if(str[i] >= '0' && str[i] <= '9') 
+				t = 3;
+			else t = 4;
+	}
+	char *ptr2[5];
+	int k = stok(str, '.', ptr2, size);
+	isIp(ptr2, size, t);
+	suntok(str, '.', ptr2, k);
+	suntok(str, ':', ptr, j);
+}
+
+void process(char *str, int size)
+{
+	toLowCase(str, size);
+}

@@ -5,4 +5,6 @@ int slen(char *str);
 int sequal(char s1[], char s2[]);
 int isDigit(char *str, int size);
 char toLowCase(char *str, int size);
-int isIp(char *str[], int size, int t);
+int isIp(char *ptr[], int size, int t);
+void check(char *str, char *ptr[], int size, int t);
+void process(char *str, int size);
