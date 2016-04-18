@@ -73,12 +73,17 @@ int isIp(char *ptr[], int size, int t)
 		for(l = 0; l <= 3; l++) {
 			int x;
 			x = atoi(ptr[l]);
-			if(x < 0 || x > 255)
-				return printf("IP is correct: no\n");	
+			if(x < 0 || x > 255) {
+				printf("IP is correct: no\n");	
+				return 0;
+			}
 		}
 		return printf("IP is correct: yes\n");
 	}
-	else printf("IP is correct: no\n");	
+	else {
+		printf("IP is correct: no\n");	
+		return 0;
+	}
 }
 
 
@@ -86,12 +91,12 @@ void check(char *str, char *ptr[], int size)
 {
 	int t, i;
 	int j = stok(str, ':', ptr, size);
-	for(int i = 0; (str[i] != '\0'); i++)
+	for(i = 0; (str[i] != '\0'); i++)
 		if(str[i] == '.')
 			t++;
 	if (t == 3) {
 		for(i = 0; i < str[i] != '\0'; i++) 
-			if(str[i] >= '0' && str[i] <= '9' && str[i] != '.') 
+			if((str[i] >= '0' && str[i] <= '9') || (str[i] == '.')) 
 				t = 3;
 			else {
 				t = 4;
