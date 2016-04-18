@@ -6,5 +6,7 @@ int sequal(char s1[], char s2[]);
 int isDigit(char *str, int size);
 char toLowCase(char *str, int size);
 int isIp(char *ptr[], int size, int t);
-void check(char *str, char *ptr[], int size, int t);
+void check(char *str, char *ptr[], int size);
 void process(char *str, int size);
+void input(char *str);
+void output(char *str);

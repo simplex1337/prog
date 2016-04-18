@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#define MAXPATH 261
+#define MAXCNT 10
+#define MAXSIZE (MAXPATH*MAXCNT)
+
 int stok(char *str, char delim, char *ptr[], int size)
 {
 	char *suf = str;
@@ -72,22 +76,27 @@ int isIp(char *ptr[], int size, int t)
 			if(x < 0 || x > 255)
 				return printf("IP is correct: no\n");	
 		}
-	return printf("IP is correct: yes\n");
+		return printf("IP is correct: yes\n");
 	}
 	else printf("IP is correct: no\n");	
 }
 
-void check(char *str, char *ptr[], int size, int t)
+
+void check(char *str, char *ptr[], int size)
 {
+	int t, i;
 	int j = stok(str, ':', ptr, size);
-	for(int i = 0; (i < size); i++)
+	for(int i = 0; (str[i] != '\0'); i++)
 		if(str[i] == '.')
 			t++;
 	if (t == 3) {
-		for(int i = 0; i < slen(str); i++) 
-			if(str[i] >= '0' && str[i] <= '9') 
+		for(i = 0; i < str[i] != '\0'; i++) 
+			if(str[i] >= '0' && str[i] <= '9' && str[i] != '.') 
 				t = 3;
-			else t = 4;
+			else {
+				t = 4;
+				break;
+			}
 	}
 	char *ptr2[5];
 	int k = stok(str, '.', ptr2, size);
@@ -99,4 +108,15 @@ void check(char *str, char *ptr[], int size, int t)
 void process(char *str, int size)
 {
 	toLowCase(str, size);
+}
+
+void input(char *str)
+{
+	printf("input paths: ");
+	fgets(str, MAXSIZE, stdin);
+}
+
+void output(char *str)
+{
+	printf("updated path is: %s\n", str);
 }
