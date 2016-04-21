@@ -43,21 +43,6 @@ int slen(char *str)
 	return i;
 }
 
-int sequal(char s1[], char s2[])
-{
-    int i, flg = 1;
-    for(i=0; flg && (s1[i]!='\0' || s2[i]!='\0') ;i++)
-        if( s1[i]!=s2[i] ) flg = 0;
-    return flg;
-}
-
-int isDigit(char *str, int size)
-{
-	for(int i = 0; i < size; i++) 
-		if( atoi(str) < 0 || atoi(str) > 255)
-			printf("powel nah\n");
-}
-
 char toLowCase(char *str, int size) 
 { 
 	for (int i = 0; i < size; i++) {
@@ -75,21 +60,34 @@ int isIp(char *ptr[], int size, int t)
 			x = atoi(ptr[l]);
 			if(x < 0 || x > 255) {
 				printf("IP is correct: no\n");	
-				return 0;
+				exit(EXIT_FAILURE);
 			}
 		}
 		return printf("IP is correct: yes\n");
 	}
 	else {
 		printf("IP is correct: no\n");	
-		return 0;
+		exit(EXIT_FAILURE);
 	}
 }
 
 
 void check(char *str, char *ptr[], int size)
 {
-	int t, i;
+	int t, i, s;
+	if (scspn(str, size) > 0) {
+		printf("Is SCP: no\n");
+		return;
+	}
+	for(i = 0; (str[i] != '\0'); i++)
+		if(str[i] == ':' && str[i+1] == '/')
+			s++;
+	if (s == 1)
+		printf("Is SCP: yes\n");
+	else { 
+		printf("Is SCP: no\n");
+		return;
+	}
 	int j = stok(str, ':', ptr, size);
 	for(i = 0; (str[i] != '\0'); i++)
 		if(str[i] == '.')
@@ -108,6 +106,8 @@ void check(char *str, char *ptr[], int size)
 	isIp(ptr2, size, t);
 	suntok(str, '.', ptr2, k);
 	suntok(str, ':', ptr, j);
+	process(str, size);
+	output(str);
 }
 
 void process(char *str, int size)
@@ -124,4 +124,14 @@ void input(char *str)
 void output(char *str)
 {
 	printf("updated path is: %s\n", str);
+}
+
+int scspn(char str[], int size)
+{
+	char nsym[] = {'\\', '+', '*', '?', '"', '<', '>', '|'};
+	int j;
+	for(j = 0; nsym[j] != '\0'; j++)
+		if (schr(str, nsym[j], size) >= 0)
+			return 1;
+	return 0;
 }

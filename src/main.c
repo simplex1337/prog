@@ -13,9 +13,7 @@ int main()
 	char *ptr[10];
 	input(str);
 	int size = slen(str);
-	check (str, ptr, size);
-	process (str, size);
-	output (str);
+	check(str, ptr, size);
 	return 0;
 }
 

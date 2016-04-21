@@ -10,3 +10,4 @@ void check(char *str, char *ptr[], int size);
 void process(char *str, int size);
 void input(char *str);
 void output(char *str);
+int scspn(char str[], int size);
