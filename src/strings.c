@@ -74,7 +74,7 @@ int isIp(char *ptr[], int size, int t)
 
 void check(char *str, char *ptr[], int size)
 {
-	int t, i, s;
+	int t, i, s, d;
 	if (scspn(str, size) > 0) {
 		printf("Is SCP: no\n");
 		return;
@@ -84,8 +84,8 @@ void check(char *str, char *ptr[], int size)
 			s++;
 	for(i = 0; (str[i] != '\0'); i++)
 		if(str[i] == ':')
-			s = 5;
-	if (s == 1)
+			d++;
+	if (s == 1 && d ==1)
 		printf("Is SCP: yes\n");
 	else { 
 		printf("Is SCP: no\n");
