@@ -10,7 +10,7 @@ int main()
 {
 	char delim;
 	char str[MAXSIZE];
-	char *ptr[10];
+	char *ptr[228];
 	input(str);
 	int size = slen(str);
 	check(str, ptr, size);

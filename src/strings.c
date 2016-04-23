@@ -74,18 +74,18 @@ int isIp(char *ptr[], int size, int t)
 
 void check(char *str, char *ptr[], int size)
 {
-	int t, i, s, d;
+	int t, i, d;
 	if (scspn(str, size) > 0) {
 		printf("Is SCP: no\n");
 		return;
 	}
-	for(i = 0; (str[i] != '\0'); i++)
+	/*for(i = 0; (str[i] != '\0'); i++)
 		if(str[i] == ':' && str[i+1] == '/')
-			s++;
+			s++;*/
 	for(i = 0; (str[i] != '\0'); i++)
 		if(str[i] == ':')
 			d++;
-	if (s == 1 && d ==1)
+	if (d == 1)
 		printf("Is SCP: yes\n");
 	else { 
 		printf("Is SCP: no\n");
@@ -104,7 +104,7 @@ void check(char *str, char *ptr[], int size)
 				break;
 			}
 	}
-	char *ptr2[5];
+	char *ptr2[228];
 	int k = stok(str, '.', ptr2, size);
 	isIp(ptr2, size, t);
 	suntok(str, '.', ptr2, k);
