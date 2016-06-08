@@ -79,9 +79,6 @@ void check(char *str, char *ptr[], int size)
 		printf("Is SCP: no\n");
 		return;
 	}
-	/*for(i = 0; (str[i] != '\0'); i++)
-		if(str[i] == ':' && str[i+1] == '/')
-			s++;*/
 	for(i = 0; (str[i] != '\0'); i++)
 		if(str[i] == ':')
 			d++;
